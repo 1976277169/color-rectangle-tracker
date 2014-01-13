@@ -17,7 +17,7 @@ LOCAL_MODULE  := rectangledetector
 
 LOCAL_SRC_FILES := \
  	RectangleDetector.cpp \
- 	RectangleFinder.cpp \
+ 	../../RectangleFinder/RectangleFinder.cpp \
  	CameraRenderer.cpp \
 	CameraUtil.cpp \
 	yuv-neon.s
