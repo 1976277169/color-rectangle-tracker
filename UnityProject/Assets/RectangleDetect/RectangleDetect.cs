@@ -12,6 +12,8 @@ public class RectangleDetect : MonoBehaviour {
 	private static extern void AR_RenderBackgroundFrame();
 	[DllImport("rectangledetector")]
 	private static extern void AR_GetMarkerLocation([In,Out] int[] marker);
+	[DllImport("rectangledetector")]
+	private static extern void AR_InitColorRange(int minB, int maxB, int minG, int maxG, int minR, int maxR);
 	#endif
 	#if UNITY_IPHONE
 	[DllImport("__Internal")]
@@ -20,16 +22,28 @@ public class RectangleDetect : MonoBehaviour {
 	private static extern void AR_RenderBackgroundFrame();
 	[DllImport("__Internal")]
 	private static extern void AR_GetMarkerLocation([In,Out] int[] marker);
+	[DllImport("__Internal")]
+	private static extern void AR_InitColorRange(int minB, int maxB, int minG, int maxG, int minR, int maxR);
 	#endif
 
 	private const int CAMERA_WIDTH = 640;
 	private const int CAMERA_HEIGHT = 480;
 
 	public GameObject backgroundPlane;
-	
 	Texture2D tex;
 
 	private int[] markerCoordinates = new int[]{0,0,0,0,0};
+
+	// Here are the min/max values for each RGB color component.
+	// Value range is 0 - 255, min value must be smaller than max value.
+	// Only objects which have color value within the specified range will be tracked.
+	// You can also specify separate ranges for Android and iOS platforms
+	public int minR;
+	public int maxR;
+	public int minG;
+	public int maxG;
+	public int minB;
+	public int maxB;
 
 	void Start(){
 		CreateBackgroundTextureAndPassToPlugin();
@@ -50,7 +64,7 @@ public class RectangleDetect : MonoBehaviour {
 		// Pass texture pointer to the plugin and initialize the
 		// background rendering
 		AR_InitBackgroundRender(tex.GetNativeTextureID(), CAMERA_WIDTH, CAMERA_HEIGHT);
-		
+		AR_InitColorRange(minB, maxB, minG, maxG, minR, maxR);
 	}
 	
 	// Update is called once per frame
@@ -67,7 +81,7 @@ public class RectangleDetect : MonoBehaviour {
 			//int width = markerCoordinates[3];
 			//int height = markerCoordinates[4];
 			//float scale = (float)height / (float)CAMERA_HEIGHT;
-			Debug.Log("x: " + x + ", y: " + y);
+			//Debug.Log("x: " + x + ", y: " + y);
 			model.transform.position = new Vector3(-x, -y, model.transform.position.z);
 			//model.transform.localScale = new Vector3(scale, scale, scale);
 			return true;

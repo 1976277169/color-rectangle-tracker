@@ -1,5 +1,5 @@
 #include "UnityCameraRenderer.h"
-#include "Logwrapper.h"
+#include "../../RectangleFinder/Logwrapper.h"
 //#include "astri_img.h"
 
 void UnityCameraRenderer::initRendering(int texId, int w, int h){

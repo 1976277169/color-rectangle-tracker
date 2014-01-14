@@ -8,6 +8,8 @@
 class RectangleFinder {
 public:
 	RectangleFinder();
+    void setColorRange(int minB, int maxB, int minG, int maxG, int minR, int maxR);
+    // input image is a BGRA or BGR565 matrix
 	void detectRectangles(cv::Mat& image, int* rectArray);
 
 private:
@@ -25,6 +27,13 @@ private:
 	cv::Mat diamond;
 	cv::Mat tmpImgRGB;
 	cv::Mat filtered;
+    
+    int minB;
+    int maxB;
+    int minG;
+    int maxG;
+    int minR;
+    int maxR;
 
 };
 

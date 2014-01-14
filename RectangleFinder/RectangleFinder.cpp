@@ -7,13 +7,28 @@ RectangleFinder::RectangleFinder(){
 }
 
 void RectangleFinder::init(){
-	tmpImgRGB = cv::Mat::zeros(480, 640, CV_8UC3);
 	filtered = cv::Mat::zeros(480, 640, CV_8U);
 
 	const int arr[] = {1,1,3,5,7,9,11,9,7,5,3,1,1};
 	std::vector<int> vec(arr, arr + sizeof(arr) / sizeof(arr[0]));
 	diamond = cv::Mat(13, 13, CV_8UC1, cv::Scalar(255));
 	gendiamond(diamond, vec);
+    
+    minB = 0;
+    maxB = 60;
+    minG = 0;
+    maxG = 60;
+    minR = 90;
+    maxR = 255;
+}
+
+void RectangleFinder::setColorRange(int miB, int maB, int miG, int maG, int miR, int maR){
+    minB = miB;
+    maxB = maB;
+    minG = miG;
+    maxG = maG;
+    minR = miR;
+    maxR = maR;
 }
 
 void RectangleFinder::detectRectangles(cv::Mat& image, int* rectArray){
@@ -24,10 +39,12 @@ void RectangleFinder::detectRectangles(cv::Mat& image, int* rectArray){
 		LOGD("frame is empty");
 		return;
 	}
-    
+#ifdef ANDROID
     cv::cvtColor(image, tmpImgRGB, CV_BGR5652BGR);
-
-	cv::inRange(tmpImgRGB, cv::Scalar(0, 0, 90), cv::Scalar(60, 60, 255), filtered);
+#else
+    cv::cvtColor(image, tmpImgRGB, CV_BGRA2BGR);
+#endif
+	cv::inRange(tmpImgRGB, cv::Scalar(minB, minG, minR), cv::Scalar(maxB, maxG, maxR), filtered);
 
 	std::vector<std::vector<cv::Point> > squares;
 	std::vector<cv::Rect> rectangles;
@@ -36,7 +53,7 @@ void RectangleFinder::detectRectangles(cv::Mat& image, int* rectArray){
 	//drawSquares(filtered, squares);
 	//drawRectangles(filtered, rectangles);
 
-	//cv::cvtColor(filtered, image, CV_GRAY2BGR565);
+	//cv::cvtColor(filtered, image, CV_GRAY2BGRA);
 
 }
 

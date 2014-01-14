@@ -23,6 +23,7 @@ extern "C" {
     );
 
     void EXPORT_API AR_InitBackgroundRender(int textureId);
+    void EXPORT_API AR_InitColorRange(int minB, int maxB, int minG, int maxG, int minR, int maxR);
     void EXPORT_API AR_RenderBackgroundFrame();
     int  EXPORT_API AR_GetMarkerLocation(int* array);
 
@@ -36,9 +37,6 @@ extern "C" {
 	unsigned char* greyscaleBuffer;
 
     pthread_mutex_t renderMutex;
-
-    pthread_t processingThread;
-    static bool isProcessing;
 
     UnityCameraRenderer cameraRenderer;
     RectangleFinder rectFinder;

@@ -1,6 +1,6 @@
 #include "RectangleDetector.h"
 #include "YUV420toRGB565.h"
-#include "Logwrapper.h"
+#include "../../RectangleFinder/Logwrapper.h"
 
 #include <sys/time.h>
 #include <time.h>
@@ -18,6 +18,7 @@ void lockRenderBuffer() {
 }
 
 cv::Mat camImgTmp = cv::Mat::zeros(480, 640, CV_8UC2);
+cv::Mat tmpImgRGB = cv::Mat::zeros(480, 640, CV_8UC3);
 
 void processFrame(){
 
@@ -26,6 +27,7 @@ void processFrame(){
 		LOGD("Empty frame!");
 		return;
 	}
+	cv::cvtColor(camImgTmp, tmpImgRGB, CV_BGR5652BGR);
 	rectFinder.detectRectangles(camImgTmp, rectangle);
 
 }
@@ -73,6 +75,12 @@ void AR_InitBackgroundRender(int textureId){
 	greyscaleBuffer = (uint8_t*) malloc(renderBufSize);
 
 	cameraRenderer.initRendering(textureId, FRAME_WIDTH, FRAME_HEIGHT);
+
+}
+
+void AR_InitColorRange(int minB, int maxB, int minG, int maxG, int minR, int maxR){
+
+	rectFinder.setColorRange(minB, maxB, minG, maxG, minR, maxR);
 
 }
 
