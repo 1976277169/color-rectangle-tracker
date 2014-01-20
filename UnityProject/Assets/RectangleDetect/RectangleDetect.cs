@@ -78,12 +78,17 @@ public class RectangleDetect : MonoBehaviour {
 			float y = markerCoordinates[1] * (100f / CAMERA_WIDTH) - 50f;
 			float x = markerCoordinates[2] * (80f / CAMERA_HEIGHT) - 40f;
 
-			//int width = markerCoordinates[3];
-			//int height = markerCoordinates[4];
-			//float scale = (float)height / (float)CAMERA_HEIGHT;
-			//Debug.Log("x: " + x + ", y: " + y);
+			int width = markerCoordinates[3];
+			int height = markerCoordinates[4];
+
+			// Calculate scale for the object.
+			// If the marker fills the whole screen the scale is 1, so use some multiplier
+			// after scaling to make the object into suitable size.
+			float scale = (float)(width + height) / (float)(CAMERA_WIDTH + CAMERA_HEIGHT);
+			scale *= 10;
+
 			model.transform.position = new Vector3(-x, -y, model.transform.position.z);
-			//model.transform.localScale = new Vector3(scale, scale, scale);
+			model.transform.localScale = new Vector3(scale, scale, scale);
 			return true;
 		}
 		return false;

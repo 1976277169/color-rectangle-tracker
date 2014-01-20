@@ -53,7 +53,7 @@ void RectangleFinder::detectRectangles(cv::Mat& image, int* rectArray){
 	//drawSquares(filtered, squares);
 	//drawRectangles(filtered, rectangles);
 
-	//cv::cvtColor(filtered, image, CV_GRAY2BGRA);
+	//cv::cvtColor(filtered, image, CV_GRAY2BGR565);
 
 }
 
@@ -91,8 +91,8 @@ void RectangleFinder::findSquares(const cv::Mat& image,
         rectArray[0] = 1;
         rectArray[1] = r.x + r.width / 2;
         rectArray[2] = r.y + r.height / 2;
-        rectArray[3] = 1;
-        rectArray[4] = 1;
+        rectArray[3] = r.width;
+        rectArray[4] = r.height;
         
     }else {
         rectArray[0] = 0;

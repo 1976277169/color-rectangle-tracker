@@ -48,11 +48,12 @@ JNIEXPORT void JNICALL Java_org_astri_rectangledetector_MainActivity_stopProcess
 }
 
 cv::Mat camImgTmp = cv::Mat::zeros(480, 640, CV_8UC2);
+int rectArray[5];
 
 void processFrame(){
 
 	camImgTmp.data = renderBufRGB565;
-	rectFinder.detectRectangles(camImgTmp);
+	rectFinder.detectRectangles(camImgTmp, rectArray);
 
 }
 
