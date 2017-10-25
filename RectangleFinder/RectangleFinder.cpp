@@ -50,8 +50,9 @@ void RectangleFinder::detectRectangles(cv::Mat& image, int* rectArray){
 	std::vector<cv::Rect> rectangles;
     
 	findSquares(filtered, squares, rectangles, rectArray);
-	//drawSquares(filtered, squares);
-	//drawRectangles(filtered, rectangles);
+
+    drawSquares(image, squares);
+	drawRectangles(image, rectangles);
 
 	//cv::cvtColor(filtered, image, CV_GRAY2BGR565);
 
@@ -85,7 +86,7 @@ void RectangleFinder::findSquares(const cv::Mat& image,
 
     //filterRectangles(contours, squares);
     boundingBoxes(contours, rectangles);
-    
+
     if(rectangles.size() > 0){
         cv::Rect r = rectangles.at(0);
         rectArray[0] = 1;

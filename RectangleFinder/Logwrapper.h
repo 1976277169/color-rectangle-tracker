@@ -1,38 +1,16 @@
 //
 //  Logwrapper.h
-//  Classifer
 //
 //  Created by VIEW Laboratory on 25/7/13.
 //  Copyright (c) 2013 ASTRI. All rights reserved.
 //
 
-#ifndef Classifer_Logwrapper_h
-#define Classifer_Logwrapper_h
+#ifndef LOGWRAPPER_H
+#define LOGWRAPPER_H
 
-#ifdef _DEBUG_
+#ifdef DEBUG
 
-void TimeInit(uint64_t *time)
-{
-    struct timeval _tv;
-    struct timezone _tz;
-    gettimeofday(&_tv, &_tz);
-    *time = _tv.tv_sec * 1000000 + _tv.tv_usec;
-}
-
-void TimeLaps(uint64_t *time)
-{
-    struct timeval _tv;
-    struct timezone _tz;
-    
-    uint64_t _curTime;
-    gettimeofday(&_tv, &_tz);
-    _curTime = _tv.tv_sec * 1000000 + _tv.tv_usec;
-    *time = _curTime - *time;
-    
-}
-
-
-#ifdef _ANDROID_
+#ifdef ANDROID
 
 #include <android/log.h>
 #define LOGTAG "ARCore"
@@ -57,7 +35,7 @@ void TimeLaps(uint64_t *time)
 #endif
 #endif
 
-#ifndef _DEBUG_
+#ifndef DEBUG
 
 #define LOGD(...) 
 #define LOGV(...) 
