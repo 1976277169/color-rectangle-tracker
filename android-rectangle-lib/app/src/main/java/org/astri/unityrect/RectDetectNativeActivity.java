@@ -1,6 +1,6 @@
 package org.astri.unityrect;
 
-import org.astri.arprocessing.camera.CameraHandler;
+import org.astri.camerahandler.CameraHandler;
 
 import android.os.Bundle;
 import android.view.SurfaceView;
@@ -21,7 +21,7 @@ public class RectDetectNativeActivity extends UnityPlayerNativeActivity {
 		rectangleDetector = new RectangleDetector();
 		
 		SurfaceView preview = new SurfaceView(this);
-		camera = new CameraHandler();
+		camera = new CameraHandler(getApplicationContext());
 		camera.setPreviewHolder(preview);
 		camera.setDataListener(rectangleDetector);
 		

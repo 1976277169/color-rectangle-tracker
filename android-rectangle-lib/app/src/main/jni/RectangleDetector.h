@@ -6,7 +6,7 @@
 
 #include "opencv2/opencv.hpp"
 #include "UnityCameraRenderer.h"
-#include "../../RectangleFinder/RectangleFinder.h"
+#include "RectangleFinder.h"
 
 #define FRAME_WIDTH 640
 #define FRAME_HEIGHT 480

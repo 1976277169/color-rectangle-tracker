@@ -1,9 +1,7 @@
 #include "RectangleDetector.h"
 #include "YUV420toRGB565.h"
-#include "../../RectangleFinder/Logwrapper.h"
+#include "Logwrapper.h"
 
-#include <sys/time.h>
-#include <time.h>
 
 
 void unlockRenderBuffer() {
