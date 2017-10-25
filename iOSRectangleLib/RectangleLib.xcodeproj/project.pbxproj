@@ -7,11 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F2FC067188CC9010012EDDE /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F2FC066188CC9010012EDDE /* opencv2.framework */; };
 		0F8791DE1883EE7100EE1460 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8791DD1883EE7100EE1460 /* Foundation.framework */; };
 		0F8791E31883EE7100EE1460 /* RectangleLib.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F8791E21883EE7100EE1460 /* RectangleLib.h */; };
 		0F8791E51883EE7100EE1460 /* RectangleLib.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8791E41883EE7100EE1460 /* RectangleLib.mm */; };
-		0F8791EC1883EE7100EE1460 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8791EB1883EE7100EE1460 /* XCTest.framework */; };
 		0F8791ED1883EE7100EE1460 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8791DD1883EE7100EE1460 /* Foundation.framework */; };
 		0F8791F21883EE7100EE1460 /* libRectangleLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8791DA1883EE7100EE1460 /* libRectangleLib.a */; };
 		0F8791F81883EE7100EE1460 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F8791F61883EE7100EE1460 /* InfoPlist.strings */; };
@@ -23,6 +21,7 @@
 		0F8792D61884EE5000EE1460 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8792D51884EE5000EE1460 /* AVFoundation.framework */; };
 		0F8792DA1884F2AB00EE1460 /* BackgroundRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8792D91884F2AB00EE1460 /* BackgroundRenderer.m */; };
 		0F8792DE18850A6000EE1460 /* RectangleDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F8792DC18850A6000EE1460 /* RectangleDetector.cpp */; };
+		F85556811FA07136006FDC8C /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F2FC066188CC9010012EDDE /* opencv2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +55,6 @@
 		0F8791E21883EE7100EE1460 /* RectangleLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RectangleLib.h; sourceTree = "<group>"; };
 		0F8791E41883EE7100EE1460 /* RectangleLib.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RectangleLib.mm; sourceTree = "<group>"; };
 		0F8791EA1883EE7100EE1460 /* RectangleLibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RectangleLibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F8791EB1883EE7100EE1460 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		0F8791F51883EE7100EE1460 /* RectangleLibTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RectangleLibTests-Info.plist"; sourceTree = "<group>"; };
 		0F8791F71883EE7100EE1460 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0F8791F91883EE7100EE1460 /* RectangleLibTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RectangleLibTests.m; sourceTree = "<group>"; };
@@ -81,7 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F2FC067188CC9010012EDDE /* opencv2.framework in Frameworks */,
+				F85556811FA07136006FDC8C /* opencv2.framework in Frameworks */,
 				0F8792D61884EE5000EE1460 /* AVFoundation.framework in Frameworks */,
 				0F8792CA1883F19C00EE1460 /* CoreVideo.framework in Frameworks */,
 				0F8792C81883F15D00EE1460 /* UIKit.framework in Frameworks */,
@@ -93,7 +91,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F8791EC1883EE7100EE1460 /* XCTest.framework in Frameworks */,
 				0F8791ED1883EE7100EE1460 /* Foundation.framework in Frameworks */,
 				0F8791F21883EE7100EE1460 /* libRectangleLib.a in Frameworks */,
 			);
@@ -131,7 +128,6 @@
 				0F8792C91883F19C00EE1460 /* CoreVideo.framework */,
 				0F8792C71883F15D00EE1460 /* UIKit.framework */,
 				0F8791DD1883EE7100EE1460 /* Foundation.framework */,
-				0F8791EB1883EE7100EE1460 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -395,22 +391,16 @@
 				DSTROOT = /tmp/RectangleLib.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/view/Projects/rectangle_detector/iOSRectangleLib,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RectangleLib/RectangleLib-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					/Users/view/Projects/rectangle_detector/iOSRectangleLib/OpenCV/headers,
-				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/view/Projects/rectangle_detector/iOSRectangleLib/OpenCV,
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)";
 				VALID_ARCHS = armv7;
 			};
 			name = Debug;
@@ -423,23 +413,17 @@
 				DSTROOT = /tmp/RectangleLib.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/view/Projects/rectangle_detector/iOSRectangleLib,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RectangleLib/RectangleLib-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					/Users/view/Projects/rectangle_detector/iOSRectangleLib/OpenCV/headers,
-				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/view/Projects/rectangle_detector/iOSRectangleLib/OpenCV,
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)";
 				VALID_ARCHS = armv7;
 			};
 			name = Release;
